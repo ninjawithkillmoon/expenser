@@ -1,7 +1,9 @@
 NwkmExpenser::Application.routes.draw do
-  resources :users
+  resources :users, only: [:show, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :tags
+  resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :accounts
+  resources :contacts
 
   root to: 'static_pages#home'
 

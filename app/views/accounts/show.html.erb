@@ -1,0 +1,13 @@
+<% provide(:title, @account.name) %>
+<% provide(:titleSmall, 'Profile') %>
+
+<div class="row-fluid">
+  <dl class="dl-horizontal">
+    <%= dtdd 'Name', @account.name %>
+    <%= dtdd 'Balance', @account.balance %>
+    <%= dtdd '', link_to(raw("<i class='icon-edit'></i> Edit"), edit_account_path(@account), class: "btn btn-small btn-warning") %>
+  </dl>
+</div>
+
+<% provide :leftNavButtonBody, 'Home' %>
+<% provide :leftNavButtonUrl, root_path %>

@@ -1,9 +1,9 @@
-<% provide(:title, @tag.name) %> 
+<% provide(:title, @account.name) %> 
 <% provide(:titleSmall, "Edit") %>
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@tag, html: {class: "form-horizontal"}) do |f| %>
+    <%= form_for(@account, html: {class: "form-horizontal"}) do |f| %>
       
       <%=render 'fields', f: f %>
 
@@ -11,11 +11,11 @@
         <%= button_tag(type: :submit, class: "btn btn-small btn-success") do %>
           <i class='icon-ok'></i> Save changes
         <% end %>
-        <%= link_to raw("<i class='icon-remove'></i> Cancel"), tags_path, class: "btn btn-small" %>
+        <%= link_to raw("<i class='icon-remove'></i> Cancel"), accounts_path, class: "btn btn-small" %>
       </div>
     <% end %>
   </div>
 </div>
 
-<% provide :leftNavButtonBody, 'Tags' %>
-<% provide :leftNavButtonUrl, tags_path %>
+<% provide :leftNavButtonBody, 'Accounts' %>
+<% provide :leftNavButtonUrl, accounts_path %>

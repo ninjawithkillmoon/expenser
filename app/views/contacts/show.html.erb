@@ -1,0 +1,12 @@
+<% provide(:title, @contact.name) %>
+<% provide(:titleSmall, 'Profile') %>
+
+<div class="row-fluid">
+  <dl class="dl-horizontal">
+    <%= dtdd 'Name', @contact.name %>
+    <%= dtdd '', link_to(raw("<i class='icon-edit'></i> Edit"), edit_contact_path(@contact), class: "btn btn-small btn-warning") %>
+  </dl>
+</div>
+
+<% provide :leftNavButtonBody, 'Home' %>
+<% provide :leftNavButtonUrl, root_path %>

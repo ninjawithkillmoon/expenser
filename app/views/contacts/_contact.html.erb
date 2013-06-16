@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to contact.name, contact %></td>
+  <td>
+    <%= link_to raw('<i class="icon-edit icon-white"></i> Edit'), edit_contact_path(contact), {class: "btn btn-small btn-warning"} %>
+    <%= link_to raw('<i class="icon-trash icon-white"></i> Delete'), contact, class: "btn btn-small btn-danger", method: :delete, data: { confirm: t(:confirm_contact_delete, {id: contact.id, name: contact.name})} %></td>
+</tr>

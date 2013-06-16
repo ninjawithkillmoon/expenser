@@ -38,6 +38,27 @@ en:
     %{name}
     %{class}
 
+  # ACCOUNTS
+  account_created: Account created
+  account_deleted: Account deleted
+  account_updated: Account updated
+  confirm_account_delete: |+
+    Are you sure you want to delete the following account:
+
+    ID %{id}
+    %{name}
+    %{balance}
+
+  # CONTACTS
+  contact_created: Contact created
+  contact_deleted: Contact deleted
+  contact_updated: Contact updated
+  confirm_contact_delete: |+
+    Are you sure you want to delete the following contact:
+
+    ID %{id}
+    %{name}
+
   date:
     abbr_day_names:
     - Sun

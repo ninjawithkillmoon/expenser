@@ -9,12 +9,6 @@ class TagsController < ApplicationController
     @total = @tags.total_entries
   end
 
-  def show
-    fetch_tag
-
-    add_breadcrumb @tag.name, @tag
-  end
-
   def new
     @tag = Tag.new
 
@@ -28,7 +22,7 @@ class TagsController < ApplicationController
 
     if @tag.save
       flash[:success] = t(:tag_created)
-      redirect_to @tag
+      redirect_to tags_path
     else
       render 'new'
     end
@@ -49,7 +43,7 @@ class TagsController < ApplicationController
 
     if @tag.update_attributes(params[:tag])
       flash[:success] = t(:tag_updated)
-      redirect_to @tag
+      redirect_to tags_path
     else
       render 'edit'
     end

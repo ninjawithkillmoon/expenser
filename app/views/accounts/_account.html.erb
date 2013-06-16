@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to account.name, account %></td>
+  <td><%= account.balance %></td>
+  <td>
+    <%= link_to raw('<i class="icon-edit icon-white"></i> Edit'), edit_account_path(account), {class: "btn btn-small btn-warning"} %>
+    <%= link_to raw('<i class="icon-trash icon-white"></i> Delete'), account, class: "btn btn-small btn-danger", method: :delete, data: { confirm: t(:confirm_account_delete, {id: account.id, name: account.name, balance: account.balance})} %></td>
+</tr>

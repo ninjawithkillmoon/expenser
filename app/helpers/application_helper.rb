@@ -29,4 +29,44 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=48&d=#{CGI.escape(default_url)}"
   end
 
+  # Returns 'active' if the current view's controller matches the input value.
+  #
+  # Return empty string otherwise
+  #
+  # * *Args*    :
+  #   - ++ -> 
+  # * *Returns* :
+  #   - 
+  #
+  def sidebar_active_controller(controller_name)
+    unless params[:controller].nil?
+      if params[:controller].casecmp(controller_name) == 0
+        return 'active'
+      end
+    end
+
+    return ''
+  end
+
+  # Returns 'active' if the current view's action matches the input value.
+  #
+  # Return empty string otherwise
+  #
+  # * *Args*    :
+  #   - ++ -> 
+  # * *Returns* :
+  #   - 
+  #
+  def sidebar_active_view(controller_name, action_name)
+    if sidebar_active_controller(controller_name) == 'active'
+      unless params[:action].nil?
+        if params[:action].casecmp(action_name) == 0
+          return 'active'
+        end
+      end
+    end
+
+    return ''
+  end
+
 end

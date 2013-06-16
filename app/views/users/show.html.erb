@@ -7,7 +7,7 @@
     <%= dtdd 'Email', mail_to(@user.email, nil, encode: "javascript") %>
     
     <% if current_user? @user %>
-      <%= dtdd '', link_to(raw("<i class='icon-edit'></i> Edit"), edit_user_path(@user), class: "btn btn-warning") %>
+      <%= dtdd '', link_to(raw("<i class='icon-edit'></i> Edit"), edit_user_path(@user), class: "btn btn-small btn-warning") %>
     <% end %>
   </dl>
 </div>
