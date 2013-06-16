@@ -1,0 +1,21 @@
+<div class="page-header position-relative">
+  <% if content_for? :title %>
+    <h1>
+      <%= yield :title %>
+      <% if content_for? :titleSmall %>
+        <i class="icon-double-angle-right"></i>
+        <small>
+          <%= yield :titleSmall %>
+        </small>
+      <% end %>
+    </h1>
+  <% else %>
+    <h1>
+      Page has no title
+      <i class="icon-double-angle-right"></i>
+        <small>
+          Maybe make one?
+        </small>
+    </h1>
+  <% end %>
+</div>

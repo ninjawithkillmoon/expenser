@@ -1,0 +1,21 @@
+<% provide(:title, @tag.name) %> 
+<% provide(:titleSmall, "Edit") %>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@tag, html: {class: "form-horizontal"}) do |f| %>
+      
+      <%=render 'fields', f: f %>
+
+      <div class="form-actions">
+        <%= button_tag(type: :submit, class: "btn btn-success") do %>
+          <i class='icon-ok'></i> Save changes
+        <% end %>
+        <%= link_to raw("<i class='icon-remove'></i> Cancel"), @tag, class: "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% provide :leftNavButtonBody, 'Tags' %>
+<% provide :leftNavButtonUrl, tags_path %>

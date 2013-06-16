@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NwkmExpenser</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title><%=fullTitle(yield(:title)) %></title>
+  <%= stylesheet_link_tag "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
 </head>
 <body>
-
-<%= yield %>
-
+  <%= render 'layouts/header' %>
+  <div id="main-container" class="container-fluid">
+    <%= render 'layouts/sidebar' %>
+    <div id="main-content" class="clearfix">
+      <%= render 'layouts/breadcrumbs' %>
+      <div id="page-content" class="clearfix">
+        <%= render 'layouts/header_page' %>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+        <% end %>
+        <%= yield %>
+        <%= render 'layouts/footer' %>
+        <%= render 'layouts/debug' %>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

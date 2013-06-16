@@ -1,0 +1,11 @@
+<div class="nwkm_actionsPagination row">
+  <div class="nwkm_actions span5">
+    <%= yield :actions %>
+  </div>
+  <div class="nwkm_paginationTotal span2">
+    <%= pluralize @total, 'result' %> found
+  </div>
+  <div class="nwkm_pagination span5">
+    <%= will_paginate %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<% provide(:title, @user.name) %>
+<% provide(:titleSmall, "Edit") %>
+
+<div class="row-fluid">
+  <%= form_for(@user, html: {class: "form-horizontal"}) do |f| %>
+    
+    <%=render 'fields', f: f %>
+
+    <div class="form-actions">
+      <%= button_tag(type: :submit, class: "btn btn-success") do %>
+        <i class='icon-ok'></i> Save changes
+      <% end %>
+      <%= link_to raw("<i class='icon-remove'></i> Cancel"), @user, class: "btn" %>
+    </div>
+  <% end %>
+</div>
+
+<% provide :leftNavButtonBody, 'Home' %>
+<% provide :leftNavButtonUrl, root_path %>

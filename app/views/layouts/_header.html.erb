@@ -1,0 +1,45 @@
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a href="#" class="brand">
+        <small>
+          <i class="icon-money"></i>
+          Expenser
+        </small>
+      </a>
+
+      <ul class="nav ace-nav pull-right">
+        <% unless current_user.nil? %>
+          <li class="light-blue user-profile">
+            <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">
+              <i class="icon-cog"></i>
+              <span id="user_info">
+                <small>Welcome,</small><%= current_user.first_name %>
+              </span>
+              <i class="icon-caret-down"></i>
+            </a>
+
+            <ul class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer" id="user_menu">
+              <li>
+                <%= link_to raw('<i class="icon-user"></i> Profile'),  current_user %>
+              </li>
+              <li>
+                <%= link_to raw('<i class="icon-wrench"></i> Settings'), edit_user_path(current_user) %>
+              </li>
+
+              <li class="divider"></li>
+
+              <li>
+                <%= link_to raw('<i class="icon-off"></i> Sign Out'), signout_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      </ul><!--/.ace-nav-->
+    </div><!--/.container-fluid-->
+  </div><!--/.navbar-inner-->
+</div>
+
+
+
+

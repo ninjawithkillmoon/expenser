@@ -1,0 +1,16 @@
+<% provide(:title, @user.name) %>
+<% provide(:titleSmall, 'Profile') %>
+
+<div class="row-fluid">
+  <dl class="dl-horizontal">
+    <%= dtdd 'Name', @user.name %>
+    <%= dtdd 'Email', mail_to(@user.email, nil, encode: "javascript") %>
+    
+    <% if current_user? @user %>
+      <%= dtdd '', link_to(raw("<i class='icon-edit'></i> Edit"), edit_user_path(@user), class: "btn btn-warning") %>
+    <% end %>
+  </dl>
+</div>
+
+<% provide :leftNavButtonBody, 'Home' %>
+<% provide :leftNavButtonUrl, root_path %>

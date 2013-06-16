@@ -1,0 +1,33 @@
+<div class="container nwkm_navButtons nwkm_navButtonsFooter">
+  <div class="row">
+    <div class="span4">
+      <% if content_for? :leftNav %>
+        <%= yield :leftNav %>
+      <% elsif content_for?(:leftNavButtonBody) && content_for?(:leftNavButtonUrl) %>
+        <%= link_to(raw("<i class='icon-circle-arrow-left'></i> #{yield(:leftNavButtonBody)}"), yield(:leftNavButtonUrl), class: "btn pull-left") %>
+      <% else %>
+        &nbsp;
+      <% end %>
+    </div>
+
+    <div class="span2 offset1">
+      <% if content_for? :centerNav %>
+        <%= yield :centerNav %>
+      <% elsif content_for?(:centerNavButtonBody) && content_for?(:centerNavButtonUrl) %>
+        <%= link_to(raw("#{yield(:centerNavButtonBody)}"), yield(:centerNavButtonUrl), class: "btn btn-large") %>
+      <% else %>
+        &nbsp;
+      <% end %>
+    </div>
+
+    <div class="span4 offset1">
+      <% if content_for? :rightNav %>
+        <%= yield :rightNav %>
+      <% elsif content_for?(:rightNavButtonBody) && content_for?(:rightNavButtonUrl) %>
+        <%= link_to(raw("#{yield(:rightNavButtonBody)} <i class='icon-circle-arrow-right'></i>"), yield(:rightNavButtonUrl), class: "btn pull-right") %>
+      <% else %>
+        &nbsp;
+      <% end %>
+    </div>
+  </div>
+</div>

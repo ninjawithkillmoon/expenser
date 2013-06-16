@@ -12,4 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require bootstrap
+//= require jquery-ui-1.10.3.custom
+//= require jquery.ui.touch-punch
+//= require chosen.jquery
+//= require fuelux/fuelux.spinner
+//= require moment
+//= require bootstrap-datepicker
+//= require bootstrap-timepicker
+//= require daterangepicker
+//= require bootstrap-colorpicker
+//= require jquery.knob
+//= require jquery.autosize
+//= require jquery.inputlimiter.1.3.1
+//= require jquery.maskedinput
+//= require ace-elements
+//= require ace

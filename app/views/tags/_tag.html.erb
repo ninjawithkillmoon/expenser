@@ -1,0 +1,9 @@
+<tr>
+  <td>
+    <%= link_to tag.name, tag, class: "label label-large #{tag.label_class}" %>
+  </td>
+  <td><%= tag.label_class %></td>
+  <td>
+    <%= link_to raw('<i class="icon-edit icon-white"></i> Edit'), edit_tag_path(tag), {class: "btn btn-warning"} %>
+    <%= link_to raw('<i class="icon-trash icon-white"></i> Delete'), tag, class: "btn btn-danger", method: :delete, data: { confirm: t(:confirm_tag_delete, {id: tag.id, name: tag.name, class: tag.label_class})} %></td>
+</tr>

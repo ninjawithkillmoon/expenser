@@ -2,6 +2,14 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
+gem 'jquery-rails'
+gem 'bcrypt-ruby'
+gem 'rails_config'
+gem 'formatted_rails_logger'
+gem 'will_paginate'
+gem 'select2-rails'
+gem 'twitter-bootstrap-rails'
+
 group :development do
   gem 'sqlite3'
   gem 'annotate'
