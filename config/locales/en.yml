@@ -59,6 +59,19 @@ en:
     ID %{id}
     %{name}
 
+  # TRANSACTIONS
+  transaction_created: Transaction created
+  transaction_deleted: Transaction deleted
+  transaction_updated: Transaction updated
+  confirm_transaction_delete: |+
+    Are you sure you want to delete the following transaction:
+
+    ID %{id}
+    %{type}
+    %{description}
+    %{amount}
+    %{date}
+
   date:
     abbr_day_names:
     - Sun

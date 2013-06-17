@@ -1,7 +1,7 @@
 <a id="menu-toggler" href="#" class="">
   <span></span>
 </a>
-<div id="sidebar">
+<div id="sidebar" class="fixed">
   <div id="sidebar-shortcuts">
     <div id="sidebar-shortcuts-large">
       <button class="btn btn-small btn-success">
@@ -83,6 +83,24 @@
         </li>
         <li class="<%= sidebar_active_view 'contacts', 'new' %>">
           <%= link_to raw('<i class="icon-double-angle-right"></i> Create'), new_contact_path %>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Transactions -->
+    <li class="<%= sidebar_active_controller 'transactions' %>">
+      <a href="#" class="dropdown-toggle">
+        <i class="icon-exchange"></i>
+        <span>Transactions</span>
+        <b class="arrow icon-angle-down"></b>
+      </a>
+
+      <ul class="submenu">
+        <li class="<%= sidebar_active_view 'transactions', 'index' %>">
+          <%= link_to raw('<i class="icon-double-angle-right"></i> View'), transactions_path %>
+        </li>
+        <li class="<%= sidebar_active_view 'transactions', 'new' %>">
+          <%= link_to raw('<i class="icon-double-angle-right"></i> Create'), new_transaction_path %>
         </li>
       </ul>
     </li>

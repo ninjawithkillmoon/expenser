@@ -1,0 +1,21 @@
+<% provide(:title, @contact.name) %> 
+<% provide(:titleSmall, "Edit") %>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@contact, html: {class: "form-horizontal"}) do |f| %>
+      
+      <%=render 'fields', f: f %>
+
+      <div class="form-actions">
+        <%= button_tag(type: :submit, class: "btn btn-small btn-success") do %>
+          <i class='icon-ok'></i> Save changes
+        <% end %>
+        <%= link_to raw("<i class='icon-remove'></i> Cancel"), contacts_path, class: "btn btn-small" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% provide :leftNavButtonBody, 'Contacts' %>
+<% provide :leftNavButtonUrl, contacts_path %>

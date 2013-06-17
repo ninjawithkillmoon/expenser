@@ -31,15 +31,15 @@ class TagsController < ApplicationController
   def edit
     fetch_tag
 
-    add_breadcrumb @tag.name, @tag
-    add_breadcrumb "Edit", edit_tag_path(@tag)
+    add_breadcrumb @tag.name, edit_tag_path(@tag)
+    add_breadcrumb "Edit"
   end
 
   def update
     fetch_tag
 
-    add_breadcrumb @tag.name, @tag
-    add_breadcrumb "Edit", edit_tag_path(@tag)
+    add_breadcrumb @tag.name, edit_tag_path(@tag)
+    add_breadcrumb "Edit"
 
     if @tag.update_attributes(params[:tag])
       flash[:success] = t(:tag_updated)

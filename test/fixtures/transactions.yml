@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  income: false
+  description: MyString
+  amount: 
+  date: 2013-06-17
+
+two:
+  income: false
+  description: MyString
+  amount: 
+  date: 2013-06-17

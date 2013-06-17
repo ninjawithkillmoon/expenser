@@ -50,7 +50,7 @@ module SessionsHelper
     unless signed_in?
       store_location
       flash[:notice] = t(:sign_in_first)
-      redirect_to signin_url
+      redirect_to login_url
     end
   end
 

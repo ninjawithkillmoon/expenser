@@ -28,3 +28,9 @@
 //= require jquery.maskedinput
 //= require ace-elements
 //= require ace
+//= require jquery.validate
+//= require_self
+
+jQuery(function() {
+  jQuery('.date-picker').datepicker();
+})

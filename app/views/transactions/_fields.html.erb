@@ -1,0 +1,32 @@
+<%= render 'layouts/error_messages', resource: @transaction %>
+
+<div class="control-group">
+  <%= f.label :income, "Type", class: "control-label" %>
+  <div class="controls">
+    <%= f.select :income, {"Income" => true, "Expense" => false}, {}, {class: "fill"} %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :description, class: "control-label" %>
+  <div class="controls">
+    <%= f.text_field :description %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :amount_dollars, "Amount", class: "control-label" %>
+  <div class="controls">
+    <%= f.number_field :amount_dollars, {step: 0.01} %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :date, class: "control-label" %>
+  <div class="controls">
+    <span class="input-icon input-icon-right">
+      <%= f.text_field :date, class: "date-picker" %>
+      <i class="icon-calendar"></i>
+    </span>
+  </div>
+</div>
