@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
   add_breadcrumb "Transactions", :transactions_path
 
   def index
-    @transactions = Transaction.paginate(page: params[:page])
+    fetch_transactions
 
     @total = @transactions.total_entries
   end
@@ -17,12 +17,14 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
+    fetch_all_for_form
 
     add_breadcrumb "New", new_transaction_path
   end
 
   def create
     @transaction = Transaction.new(params[:transaction])
+    fetch_all_for_form
 
     add_breadcrumb "New", new_transaction_path
 
@@ -36,6 +38,7 @@ class TransactionsController < ApplicationController
 
   def edit
     fetch_transaction
+    fetch_all_for_form
 
     add_breadcrumb 'Transaction', @transaction
     add_breadcrumb "Edit", edit_transaction_path(@transaction)
@@ -43,6 +46,7 @@ class TransactionsController < ApplicationController
 
   def update
     fetch_transaction
+    fetch_all_for_form
 
     add_breadcrumb 'Transaction', @transaction
     add_breadcrumb "Edit", edit_transaction_path(@transaction)
@@ -66,5 +70,32 @@ class TransactionsController < ApplicationController
 
   def fetch_transaction
     @transaction = Transaction.find(params[:id])
+  end
+
+  def fetch_transactions
+    @transactions = Transaction.order('date DESC').paginate(page: params[:page])
+  end
+
+  def fetch_all_for_form
+    fetch_accounts
+    fetch_contacts
+    fetch_transactions_settlement
+    fetch_tags
+  end
+
+  def fetch_accounts
+    @accounts = Account.all
+  end
+
+  def fetch_contacts
+    @contacts = Contact.all
+  end
+
+  def fetch_transactions_settlement
+    @transactions_with_contact = Transaction.where('contact_id not null')
+  end
+
+  def fetch_tags
+    @tags = Tag.all
   end
 end

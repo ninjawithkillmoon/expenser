@@ -7,7 +7,6 @@ gem 'bcrypt-ruby'
 gem 'rails_config'
 gem 'formatted_rails_logger'
 gem 'will_paginate'
-gem 'select2-rails'
 gem 'twitter-bootstrap-rails'
 gem 'money-rails'
 

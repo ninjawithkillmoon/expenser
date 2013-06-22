@@ -32,5 +32,7 @@
 //= require_self
 
 jQuery(function() {
-  jQuery('.date-picker').datepicker();
+  jQuery(".date-picker").datepicker();
+  jQuery(".chzn-select").chosen(); 
+  jQuery(".chzn-select-deselect").chosen({allow_single_deselect:true}); 
 })

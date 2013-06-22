@@ -6,6 +6,11 @@ en:
     attributes:
       user:
         password_digest: Password
+      transaction:
+        income: Type
+        contact_id: Paid on Behalf of
+        transaction_id: Settlement Transaction
+        tag_ids: Tags
 
   welcome: Welcome to %{title}
 

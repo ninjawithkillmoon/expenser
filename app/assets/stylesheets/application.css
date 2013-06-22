@@ -11,16 +11,14 @@
  *= require_self
  *= require bootstrap
  *= require bootstrap-responsive
+ *= require font-awesome
+ *= require jquery-ui-1.10.3.custom
+ *= require chosen
+ *= require datepicker
  *= require bootstrap-timepicker
+ *= require colorpicker
  *= require ace
  *= require ace-responsive
  *= require ace-skins
- *= require chosen
- *= require colorpicker
- *= require datepicker
- *= require font-awesome-ie7
- *= require font-awesome
- *= require jquery-ui-1.10.3.custom
  *= require custom
- *= require select2
  */

@@ -1,16 +1,44 @@
 <%= render 'layouts/error_messages', resource: @transaction %>
 
 <div class="control-group">
-  <%= f.label :income, "Type", class: "control-label" %>
+  <%= f.label :income, class: "control-label" %>
   <div class="controls">
-    <%= f.select :income, {"Income" => true, "Expense" => false}, {}, {class: "fill"} %>
+    <%= f.select :income, {"Income" => true, "Expense" => false}, {}, {class: "chzn-select"} %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :account_id, class: "control-label" %>
+  <div class="controls">
+    <%= f.select :account_id, @accounts.collect { |account| [account.name, account.id] }, {include_blank: false}, {class: "chzn-select-deselect"} %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :tag_ids, class: "control-label" %>
+  <div class="controls">
+    <%= f.select :tag_ids, @tags.collect { |tag| [tag.name, tag.id] }, {include_blank: true}, {class: "chzn-select-deselect", 'data-placeholder' => 'Select some tags', multiple: true} %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :contact_id, class: "control-label" %>
+  <div class="controls">
+    <%= f.select :contact_id, @contacts.collect { |account| [account.name, account.id] }, {include_blank: true}, {class: "chzn-select-deselect", 'data-placeholder' => 'Select a contact'} %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :transaction_settlement_id, class: "control-label" %>
+  <div class="controls">
+    <%= f.select :transaction_settlement_id, @transactions_with_contact.collect { |transaction| [transaction.summary_string(include_date: true), transaction.id] }, {include_blank: true}, {class: "chzn-select-deselect", 'data-placeholder' => 'Select a transaction'} %>
   </div>
 </div>
 
 <div class="control-group">
   <%= f.label :description, class: "control-label" %>
   <div class="controls">
-    <%= f.text_field :description %>
+    <%= f.text_area :description, {placeholder: 'Short summary of the transaction', rows: 5} %>
   </div>
 </div>
 
@@ -25,7 +53,7 @@
   <%= f.label :date, class: "control-label" %>
   <div class="controls">
     <span class="input-icon input-icon-right">
-      <%= f.text_field :date, class: "date-picker" %>
+      <%= f.text_field :date, class: "date-picker", 'data-date-format' => "yyyy-mm-dd", placeholder: 'Select a date' %>
       <i class="icon-calendar"></i>
     </span>
   </div>

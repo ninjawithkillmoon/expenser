@@ -3,10 +3,12 @@
 
 <div class="row-fluid">
   <dl class="dl-horizontal">
+    <%= dtdd 'Date', l(@transaction.date, format: :long) %>
+    <%= dtdd 'Type', @transaction.income_string %>
+    <%= dtdd 'Account', @transaction.account %>
+    <%= dtdd 'Amount', @transaction.amount_dollars %>
     <%= dtdd 'Description', @transaction.description %>
+    <%= dtdd 'Tags', @transaction.tags_html %>
     <%= dtdd '', link_to(raw("<i class='icon-edit'></i> Edit"), edit_transaction_path(@transaction), class: "btn btn-small btn-warning") %>
   </dl>
 </div>
-
-<% provide :leftNavButtonBody, 'Home' %>
-<% provide :leftNavButtonUrl, root_path %>
