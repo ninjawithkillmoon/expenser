@@ -25,6 +25,7 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(params[:transaction])
+    @transfer = Transfer.new(params[:transfer])
     fetch_all_for_form
 
     add_breadcrumb "New", new_transaction_path

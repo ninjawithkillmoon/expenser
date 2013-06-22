@@ -11,6 +11,8 @@ en:
         contact_id: Paid on Behalf of
         transaction_id: Settlement Transaction
         tag_ids: Tags
+      account:
+        balance_initial_dollars: Initial Balance
 
   welcome: Welcome to %{title}
 

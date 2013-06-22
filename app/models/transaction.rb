@@ -30,6 +30,8 @@ class Transaction < ActiveRecord::Base
 
   validate :corresponding_must_be_income, :corresponding_must_link, if: :transfer_from?
 
+  after_save :recalculate_account_balance
+
   ## validation helpers
   def transaction_must_have_contact
     if settles?
@@ -65,6 +67,12 @@ class Transaction < ActiveRecord::Base
         errors.add(:transaction_transfer_id, 'must be linked to this transaction')
       end
     end
+  end
+
+  ## callbacks
+  def recalculate_account_balance
+    account.calculate_balance
+    account.save!
   end
 
   ## helpers
