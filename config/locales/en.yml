@@ -35,6 +35,7 @@ en:
   # TAGS
   tag_created: Tag created
   tag_deleted: Tag deleted
+  tag_deleted_error: Tag deletion error
   tag_updated: Tag updated
   confirm_tag_delete: |+
     Are you sure you want to delete the following tag:
@@ -76,6 +77,9 @@ en:
     %{description}
     %{amount}
     %{date}
+
+  # TRANSFERS
+  transfer_created: Transfer created
 
   date:
     abbr_day_names:

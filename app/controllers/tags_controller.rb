@@ -4,9 +4,7 @@ class TagsController < ApplicationController
   add_breadcrumb "Tags", :tags_path
 
   def index
-    @tags = Tag.paginate(page: params[:page])
-
-    @total = @tags.total_entries
+    fetch_tags
   end
 
   def new
@@ -50,9 +48,12 @@ class TagsController < ApplicationController
   end
 
   def destroy
-    fetch_tag.destroy
+    if fetch_tag.destroy
+      flash[:success] = t(:tag_deleted)
+    else
+      flash[:error] = t(:tag_deleted_error) + ": #{@tag.errors[:base].first}"
+    end
 
-    flash[:success] = t(:tag_deleted)
     redirect_to tags_url
   end
 
@@ -60,5 +61,10 @@ class TagsController < ApplicationController
 
   def fetch_tag
     @tag = Tag.find(params[:id])
+  end
+
+  def fetch_tags
+    @tags = Tag.paginate(page: params[:page])
+    @total = @tags.total_entries
   end
 end

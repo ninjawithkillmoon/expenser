@@ -5,6 +5,7 @@ NwkmExpenser::Application.routes.draw do
   resources :accounts
   resources :contacts
   resources :transactions
+  resources :transfers, only: [:new, :create]
 
   root to: 'static_pages#home'
 

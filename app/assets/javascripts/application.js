@@ -32,7 +32,30 @@
 //= require_self
 
 jQuery(function() {
-  jQuery(".date-picker").datepicker();
-  jQuery(".chzn-select").chosen(); 
-  jQuery(".chzn-select-deselect").chosen({allow_single_deselect:true}); 
+  var activeTab = jQuery("[href=" + location.hash + "]");
+  activeTab && activeTab.tab("show");
+
+  // don't initialize anything in a tab - inactive tabs have issues with these
+  jQuery(".date-picker").not(".tab-pane .date-picker").datepicker();
+  jQuery(".chzn-select").not(".tab-pane .chzn-select").chosen();
+  jQuery(".chzn-select-deselect").not(".tab-pane .chzn-select-deselect").chosen({allow_single_deselect:true});
+
+  // initialize the active tab separately
+  activateTabElements();
+
+  // make sure that other tabs' contents are initialized when we switch to them
+  jQuery('a[data-toggle="tab"]').on('shown', function (e) {
+    activateTabElements();
+  })
 })
+
+/**
+ * Initializes the datepickers, chosens, etc that are in the currently active tab
+ */
+function activateTabElements() {
+  jQuery(".active .date-picker").datepicker();
+
+  jQuery(".active .chzn-select").chosen();
+  jQuery(".active .chzn-select-deselect").chosen({allow_single_deselect:true});
+}
+

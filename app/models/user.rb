@@ -13,12 +13,14 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible(:email, :name, :password, :password_confirmation)
+  attr_accessible :email, :name, :password, :password_confirmation, :transfer_tag_id
 
   has_secure_password
 
   before_save{ |user| user.email = email.downcase }
   before_save :create_remember_token
+
+  belongs_to :transfer_tag, class_name: 'Tag', foreign_key: 'transfer_tag_id'
 
   validates(:name, {
       presence: true,
@@ -42,6 +44,8 @@ class User < ActiveRecord::Base
       presence: true,
     }
   )
+
+  validate :transfer_tag, presence: :true
 
   def first_name
     name[/(\S+)/, 1]

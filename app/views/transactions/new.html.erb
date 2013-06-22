@@ -1,18 +1,45 @@
-<% provide(:title, 'New Transaction') %>
+<% provide(:title, 'Transaction') %>
+<% provide(:titleSmall, 'New') %>
 
 <div class="row-fluid">
-    <%= form_for(@transaction, html: {class: "form-horizontal"}) do |f| %>
+  <div class="tabbable">
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active">
+        <a data-toggle="tab" href="#transaction">
+          <i class="green icon-exchange bigger-110"></i> Transaction
+        </a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#transfer">
+          <i class="green icon-exchange bigger-110"></i> Transfer
+        </a>
+      </li>
+    </ul>
 
-      <%=render 'fields', f: f %>
-
-      <div class="form-actions">
-        <%= button_tag(type: :submit, class: "btn btn-small btn-success") do %>
-          <i class='icon-ok'></i> Create Transaction
+    <div class="tab-content">
+      <div id="transaction" class="tab-pane in active">
+        <%= form_for(@transaction, html: {class: "form-horizontal"}) do |f| %>
+          <%=render 'transactions/fields', f: f %>
+          <div class="form-actions">
+            <%= button_tag(type: :submit, class: "btn btn-small btn-success") do %>
+              <i class='icon-ok'></i> Create Transaction
+            <% end %>
+            <%= link_to raw("<i class='icon-remove'></i> Cancel"), transactions_path, class: "btn btn-small" %>
+          </div>
         <% end %>
-        <%= link_to raw("<i class='icon-remove'></i> Cancel"), transactions_path, class: "btn btn-small" %>
       </div>
-    <% end %>
-</div>
 
-<% provide :leftNavButtonBody, 'Transactions' %>
-<% provide :leftNavButtonUrl, transactions_path %>
+      <div id="transfer" class="tab-pane">
+        <%= form_for(@transfer, html: {class: "form-horizontal"}, url: '/transfers#transfer') do |f| %>
+          <%=render 'transactions/fields_transfer', f: f %>
+          <div class="form-actions">
+            <%= button_tag(type: :submit, class: "btn btn-small btn-success") do %>
+              <i class='icon-ok'></i> Create Transaction
+            <% end %>
+            <%= link_to raw("<i class='icon-remove'></i> Cancel"), transactions_path, class: "btn btn-small" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

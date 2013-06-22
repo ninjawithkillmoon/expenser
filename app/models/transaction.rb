@@ -7,7 +7,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :account
   belongs_to :paid_on_behalf,        class_name: 'Contact',     foreign_key: 'contact_id'
   belongs_to :settles,               class_name: 'Transaction', foreign_key: 'transaction_settlement_id'
-  belongs_to :corresponding_expense, class_name: 'Transaction', foreign_key: 'transaction_transfer_id'
+  belongs_to :corresponding_expense, class_name: 'Transaction', foreign_key: 'transaction_transfer_id', dependent: :destroy
 
   has_one :settled_by,           class_name: 'Transaction', foreign_key: 'transaction_settlement_id'
   has_one :corresponding_income, class_name: 'Transaction', foreign_key: 'transaction_transfer_id'
@@ -71,6 +71,10 @@ class Transaction < ActiveRecord::Base
 
   def expense?
     return !income?
+  end
+
+  def transfer?
+    return transfer_to? || transfer_from?
   end
 
   ## nil checkers
@@ -157,5 +161,19 @@ class Transaction < ActiveRecord::Base
     end
 
     return str
+  end
+
+  def icon_html
+    str = ''
+
+    if transfer?
+      str << '<i class="icon-exchange purple bigger-110"></i>'
+    elsif income?
+      str << '<i class="icon-plus green bigger-110"></i>'
+    elsif expense?
+      str << '<i class="icon-minus red bigger-110"></i>'
+    end
+
+    return str.html_safe
   end
 end
