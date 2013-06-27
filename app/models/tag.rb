@@ -32,6 +32,14 @@ class Tag < ActiveRecord::Base
     end
   end
 
+  def top_level_id
+    if root?
+      return id
+    else
+      return parent.id
+    end
+  end
+
   def label_html
     "<span class=\"label label-large #{label_class}\">#{name}</span>"
   end

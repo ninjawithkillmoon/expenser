@@ -45,7 +45,7 @@
       <div class="widget-header">
         <h5>Latest Expense Summary</h5>
         <div class="widget-toolbar">
-          <i class="icon-minus red"></i> <%= number_to_currency 1234.56 %>
+          <%= raw plus_minus_html(@grapher.total) %> <%= number_to_currency @grapher.total.abs %>
         </div>
       </div>
 
