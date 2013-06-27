@@ -15,9 +15,9 @@
 </div>
 
 <div class="control-group">
-  <%= f.label :tag_ids, class: "control-label" %>
+  <%= f.label :tag_id, class: "control-label" %>
   <div class="controls">
-    <%= f.select :tag_ids, @tags.collect { |tag| [tag.name, tag.id] }, {include_blank: true}, {class: "chzn-select-deselect", 'data-placeholder' => 'Select some tags', multiple: true} %>
+    <%= f.select :tag_id, @tags.collect { |tag| [tag.full_name, tag.id] }, {include_blank: true}, {class: "chzn-select-deselect", 'data-placeholder' => 'Select a category'} %>
   </div>
 </div>
 

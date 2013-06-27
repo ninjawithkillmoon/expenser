@@ -1,0 +1,17 @@
+<table class="table table-striped table-hover table-bordered">
+  <% @contacts.each do |contact| %>
+    <tr>
+      <td>
+        <%= link_to contact.name, contact_path(contact) %>
+      </td>
+      <td class="span2">
+        <div class="progress progress-<%= contact.positive? ? 'success' : 'danger' %>">
+          <div class="bar" style="width: <%= number_to_percentage (contact.balance_dollars / (contact.positive? ? @biggestPositive : @biggestNegative) * 100.0) %>"></div>
+        </div>
+      </td>
+      <td>
+        <%= raw contact.balance_html %>
+      </td>
+    </tr>
+  <% end %>
+</table>

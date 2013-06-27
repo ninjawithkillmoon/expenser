@@ -17,3 +17,9 @@
 .nwkm_actions {
   margin-bottom: 10px;
 }
+
+#nwkm-tag-tree .tree-item i {
+  color: #4D6878;
+  background-color: none;
+  border: none;
+}

@@ -1,4 +1,6 @@
 class Account < ActiveRecord::Base
+  include ApplicationHelper
+
   attr_accessible :name, :balance, :balance_dollars, :balance_initial, :balance_initial_dollars
 
   has_many :transactions
@@ -22,5 +24,17 @@ class Account < ActiveRecord::Base
     end
 
     self.balance_dollars = balance_new_dollars
+  end
+
+  def balance_html
+    return "#{plus_minus_html balance_dollars} #{balance_dollars.abs}"
+  end
+
+  def positive?
+    return balance >= 0
+  end
+
+  def negative?
+    return balance < 0.0
   end
 end

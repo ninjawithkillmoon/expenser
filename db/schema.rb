@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130622075524) do
+ActiveRecord::Schema.define(:version => 20130625115412) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -32,11 +32,7 @@ ActiveRecord::Schema.define(:version => 20130622075524) do
     t.string   "label_class"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "tags_transactions", :id => false, :force => true do |t|
-    t.integer "tag_id"
-    t.integer "transaction_id"
+    t.integer  "parent_id"
   end
 
   create_table "transactions", :force => true do |t|
@@ -50,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130622075524) do
     t.integer  "contact_id"
     t.integer  "transaction_settlement_id"
     t.integer  "transaction_transfer_id"
+    t.integer  "tag_id"
   end
 
   create_table "users", :force => true do |t|

@@ -10,9 +10,11 @@ en:
         income: Type
         contact_id: Paid on Behalf of
         transaction_id: Settlement Transaction
-        tag_ids: Tags
+        tag_id: Category
+        tag: Category
       account:
         balance_initial_dollars: Initial Balance
+      tag: Category
 
   welcome: Welcome to %{title}
 

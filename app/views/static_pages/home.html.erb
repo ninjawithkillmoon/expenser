@@ -1,2 +1,61 @@
 <% provide(:title, 'Home') %>
 <% provide(:titleSmall, 'Summary') %>
+
+<div class="row-fluid">
+  <div class="span4">
+    <div class="widget-box">
+      <div class="widget-header">
+        <h5>Balance Summary</h5>
+        <div class="widget-toolbar">
+          <%= raw plus_minus_html(@totalBalance) %> <%= number_to_currency @totalBalance.abs %>
+        </div>
+      </div>
+
+      <div class="widget-body">
+        <div class="widget-body-inner">
+          <div class="widget-main no-padding">
+            <%= render 'widget_balance' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="span4">
+    <div class="widget-box">
+      <div class="widget-header">
+        <h5>Loan Summary</h5>
+        <div class="widget-toolbar">
+          <%= raw plus_minus_html(@totalBalanceLoan) %> <%= number_to_currency @totalBalanceLoan.abs %>
+        </div>
+      </div>
+
+      <div class="widget-body">
+        <div class="widget-body-inner">
+          <div class="widget-main no-padding">
+            <%= render 'widget_loans' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="span4">
+    <div class="widget-box">
+      <div class="widget-header">
+        <h5>Latest Expense Summary</h5>
+        <div class="widget-toolbar">
+          <i class="icon-minus red"></i> <%= number_to_currency 1234.56 %>
+        </div>
+      </div>
+
+      <div class="widget-body">
+        <div class="widget-body-inner">
+          <div class="widget-main">
+            <%= render 'widget_expenses' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

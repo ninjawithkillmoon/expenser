@@ -1,7 +1,7 @@
 <tr>
   <td><%= link_to transaction.description, transaction %></td>
   <td><%= transaction.icon_html %> <%= number_to_currency transaction.amount_dollars %></td>
-  <td><%= transaction.tags_html %></td>
+  <td><%= raw transaction.tag_html %></td>
   <td>
     <%= link_to transaction.account.name, account_path(transaction.account) %>
     <%= transaction.transfer_to? ? raw(' <i class="icon-arrow-right purple"></i> ') + link_to(transaction.corresponding_expense.account.name, account_path(transaction.corresponding_expense.account)) : '' %>

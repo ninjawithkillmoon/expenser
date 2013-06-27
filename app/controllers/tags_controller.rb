@@ -9,12 +9,14 @@ class TagsController < ApplicationController
 
   def new
     @tag = Tag.new
+    fetch_tags
 
     add_breadcrumb "New", new_tag_path
   end
 
   def create
     @tag = Tag.new(params[:tag])
+    fetch_tags
 
     add_breadcrumb "New", new_tag_path
 
@@ -28,6 +30,7 @@ class TagsController < ApplicationController
 
   def edit
     fetch_tag
+    fetch_tags
 
     add_breadcrumb @tag.name, edit_tag_path(@tag)
     add_breadcrumb "Edit"
@@ -35,6 +38,7 @@ class TagsController < ApplicationController
 
   def update
     fetch_tag
+    fetch_tags
 
     add_breadcrumb @tag.name, edit_tag_path(@tag)
     add_breadcrumb "Edit"
@@ -64,7 +68,6 @@ class TagsController < ApplicationController
   end
 
   def fetch_tags
-    @tags = Tag.paginate(page: params[:page])
-    @total = @tags.total_entries
+    @tags = Tag.order('name ASC')
   end
 end

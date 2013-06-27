@@ -69,4 +69,20 @@ module ApplicationHelper
     return ''
   end
 
+  # Returns either a plus icon or a minus icon as HTML, depending
+  # on the value of the input.
+  #
+  # * *Args*    :
+  #   - ++ -> 
+  # * *Returns* :
+  #   - 
+  #
+  def plus_minus_html(number)
+    if number >= 0.0
+      return '<i class="icon-plus green"></i>'
+    else
+      return '<i class="icon-minus red"></i>'
+    end
+  end
+
 end

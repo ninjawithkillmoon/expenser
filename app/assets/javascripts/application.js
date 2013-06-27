@@ -15,8 +15,15 @@
 //= require bootstrap
 //= require jquery-ui-1.10.3.custom
 //= require jquery.ui.touch-punch
+//= require jquery.slimscroll
+//= require jquery.easy-pie-chart
+//= require jquery.sparkline
+//= require flot/jquery.flot
+//= require flot/jquery.flot.pie
+//= require flot/jquery.flot.resize
 //= require chosen.jquery
 //= require fuelux/fuelux.spinner
+//= require fuelux/fuelux.tree
 //= require moment
 //= require bootstrap-datepicker
 //= require bootstrap-timepicker
@@ -47,6 +54,12 @@ jQuery(function() {
   jQuery('a[data-toggle="tab"]').on('shown', function (e) {
     activateTabElements();
   })
+
+  if(typeof(data) != 'undefined') {
+    plotPies();
+  }
+
+  growTrees();
 })
 
 /**
@@ -59,3 +72,54 @@ function activateTabElements() {
   jQuery(".active .chzn-select-deselect").chosen({allow_single_deselect:true});
 }
 
+function plotPies() {
+  var placeholder = jQuery('#piechart-placeholder').css({'width':'90%' , 'min-height':'150px'});
+
+  jQuery.plot(placeholder, data, {
+    series: {
+      pie: {
+        show: true,
+        tilt:0.8,
+        highlight: {
+          opacity: 0.25
+        },
+        stroke: {
+          color: '#fff',
+          width: 2
+        },
+        startAngle: 2
+      }
+    },
+    legend: {
+      show: true,
+      position: "ne", 
+      labelBoxBorderColor: null,
+      margin:[-30,15]
+    },
+    grid: {
+      hoverable: true,
+      clickable: true
+    },
+    tooltip: true, //activate tooltip
+    tooltipOpts: {
+      content: "%s : %y.1",
+      shifts: {
+        x: -30,
+        y: -50
+      }
+    }
+  });
+}
+
+function growTrees() {
+  jQuery('#nwkm-tag-tree').ace_tree({
+    dataSource: treeDataSource ,
+    multiSelect:true,
+    loadingHTML:'<div class="offset1"><i class="icon-refresh icon-spin blue"></i></div>',
+    'open-icon' : 'icon-tag',
+    'close-icon' : 'icon-tags',
+    'selectable' : false,
+    'selected-icon' : 'icon-tag',
+    'unselected-icon' : 'icon-tag'
+  });
+}

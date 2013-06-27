@@ -2,21 +2,21 @@ class Transaction < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper, ActionView::Helpers::TranslationHelper
 
   attr_accessible :amount, :amount_dollars, :date, :description, :income,
-                  :account_id, :contact_id, :transaction_settlement_id, :transaction_transfer_id, :tag_ids
+                  :account_id, :contact_id, :transaction_settlement_id, :transaction_transfer_id, :tag_id
 
   belongs_to :account
   belongs_to :paid_on_behalf,        class_name: 'Contact',     foreign_key: 'contact_id'
   belongs_to :settles,               class_name: 'Transaction', foreign_key: 'transaction_settlement_id'
   belongs_to :corresponding_expense, class_name: 'Transaction', foreign_key: 'transaction_transfer_id', dependent: :destroy
+  belongs_to :tag
 
-  has_one :settled_by,           class_name: 'Transaction', foreign_key: 'transaction_settlement_id'
   has_one :corresponding_income, class_name: 'Transaction', foreign_key: 'transaction_transfer_id'
 
-  has_and_belongs_to_many :tags
+  has_many :settled_by, class_name: 'Transaction', foreign_key: 'transaction_settlement_id'
 
   monetize :amount, as: :amount_dollars
 
-  validates :description, :date, :amount, :account, :tags, presence: {value: true, message: 'cannot be blank'}
+  validates :description, :date, :amount, :account, :tag, presence: {value: :true, message: 'cannot be blank'}
 
   validates :income, inclusion: {in: [true, false]}
 
@@ -113,14 +113,8 @@ class Transaction < ActiveRecord::Base
 
   ## string helpers
 
-  def tags_html
-    str = ""
-
-    tags.each do |tag|
-      str << " <span class='label label-large #{tag.label_class}'>#{tag.name}</span>"
-    end
-
-    return str.html_safe
+  def tag_html
+    tag.label_html
   end
 
   def income_string

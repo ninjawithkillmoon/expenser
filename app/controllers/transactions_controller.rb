@@ -75,7 +75,7 @@ class TransactionsController < ApplicationController
   end
 
   def fetch_transactions
-    @transactions = Transaction.order('date DESC').paginate(page: params[:page])
+    @transactions = Transaction.where('transaction_transfer_id IS NULL OR income = ?', :true).order('date DESC, created_at DESC').paginate(page: params[:page])
   end
 
   def fetch_all_for_form

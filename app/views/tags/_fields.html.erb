@@ -13,3 +13,10 @@
     <%= f.text_field :label_class %>
   </div>
 </div>
+
+<div class="control-group">
+  <%= f.label :parent_id, class: "control-label" %>
+  <div class="controls">
+    <%= f.select :parent_id, @tags.collect { |tag| [tag.full_name, tag.id] }, {include_blank: true}, {class: "chzn-select-deselect", 'data-placeholder' => 'Select a category'} %>
+  </div>
+</div>
