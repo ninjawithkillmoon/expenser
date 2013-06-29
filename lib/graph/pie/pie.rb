@@ -1,22 +1,20 @@
 module Graph::Pie
-  class Pie
-    attr_accessor :data
+  class Pie < Graph::Graph
+    attr_reader :data, :total
 
     def initialize
       @data = {} # hash of string (label) to PieDatum
-      PieDatum.reset_colour
-    end
-
-    def add_datum(datum)
-      data[datum.label] = datum
+      @total = 0.0
+      reset_colour
     end
 
     def add_value(label, value)
-      if data[label].nil?
-        data[label] = PieDatum.new(label, 0.0, PieDatum.next_colour)
+      if @data[label].nil?
+        @data[label] = PieDatum.new(label, 0.0, next_colour)
       end
 
-      data[label].value = data[label].value + value
+      @data[label].value = @data[label].value + value
+      @total += value
     end
 
     # Combines all values after the specified number
@@ -72,6 +70,14 @@ module Graph::Pie
     #
     def sort_by_value
       @data = @data.sort_by { |k, v| v.value }.reverse
+    end
+
+    def recalculate_total
+      @total = 0.0
+
+      @data.each do |label, value|
+
+      end
     end
   end
 end

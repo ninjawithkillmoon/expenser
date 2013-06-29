@@ -9,10 +9,11 @@ NwkmExpenser::Application.routes.draw do
 
   root to: 'static_pages#home'
 
-  match '/assets/expense_report_data',  to: 'javascripts#expense_report_data'
+  match '/assets/expense_report_data_pie',  to: 'javascripts#expense_report_data_pie'
+  match '/assets/expense_report_data_bar',  to: 'javascripts#expense_report_data_bar'
 
   match '/login',  to: 'sessions#new'
   match '/logout', to: 'sessions#destroy'
 
-  get ':controller(/:action(/:id))'
+  get ':controller(/:action(/:nav))'
 end

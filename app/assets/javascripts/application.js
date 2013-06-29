@@ -21,7 +21,8 @@
 //= require flot/jquery.flot
 //= require flot/jquery.flot.pie
 //= require flot/jquery.flot.resize
-//= require flot/jquery.flot.tooltip
+//= require flot/jquery.flot.categories
+//= require flot/jquery.flot.orderBars
 //= require chosen.jquery
 //= require fuelux/fuelux.spinner
 //= require fuelux/fuelux.tree

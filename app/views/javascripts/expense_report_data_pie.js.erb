@@ -1,4 +1,4 @@
-var data = [
+var dataPie = [
   <% @pie.data.each do |label, datum| %>
     { label: "<%= label %>",  data: <%= datum.value %>, color: "<%= datum.colour %>"},
   <% end %>
@@ -6,12 +6,13 @@ var data = [
 
 jQuery(function() {
   plotPies();
+  jQuery('#total-placeholder').html('<%= raw plus_minus_html(-@total)%> <%= number_to_currency(@total.abs) %>');
 });
 
 function plotPies() {
   var placeholder = jQuery('#piechart-placeholder');
 
-  jQuery.plot(placeholder, data, {
+  jQuery.plot(placeholder, dataPie, {
     series: {
       pie: {
         show: true,

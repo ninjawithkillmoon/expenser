@@ -61,37 +61,14 @@ class Transfer
     @from = Transaction.new
     @to   = Transaction.new
 
-    @from.income = false
-    @to.income   = true
-
-    @from.description = description
-    @to.description   = description
-
-    @from.amount_dollars = amount_dollars
-    @to.amount_dollars   = amount_dollars
-
-    @from.date = date
-    @to.date   = date
-
-    @from.account_id = account_from_id
-    @to.account_id   = account_to_id
-
-    @from.tag_ids = [User.first.transfer_tag_id]
-    @to.tag_ids = [User.first.transfer_tag_id]
+    @from.update_attributes(income: false, description: description, amount_dollars: amount_dollars, date: date, account_id: account_from_id, tag_id: User.first.transfer_tag_id)
+    @to  .update_attributes(income: true,  description: description, amount_dollars: amount_dollars, date: date, account_id: account_to_id,   tag_id: User.first.transfer_tag_id)
 
     unless @from.save
       return false
     end
-    
-    unless @to.save
-      return false
-    end
 
-    @to.transaction_transfer_id   = @from.id
-
-    unless @from.save
-      return false
-    end
+    @to.transaction_transfer_id = @from.id
     
     unless @to.save
       return false

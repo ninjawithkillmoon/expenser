@@ -1,0 +1,90 @@
+var dataBar1 = [
+  <% @bar.data.each do |label, datum| %>
+    ["<%= label %>", <%= datum.y %>],
+  <% end %>
+];
+
+var dataBar = new Array();
+
+dataBar.push({
+  data:dataBar1,
+  bars: {
+    show: true, 
+    barWidth: 0.4,
+    align: "center"
+  },
+  color: '#d15b47'
+});
+
+jQuery(function() {
+  plotBars();
+});
+
+function plotBars() {
+  var placeholder = jQuery('#barchart-placeholder');
+
+  jQuery.plot(placeholder, dataBar, {
+    xaxis: {
+      tickLength: 0,
+      mode: "categories"
+    },
+    grid: {
+      borderWidth: 0,
+      hoverable: true,
+      clickable: true
+    }
+  });
+}
+
+/* MULTIPLE SERIES BARS
+var dataBar1 = [
+  <% @bar.data.each do |label, datum| %>
+    ["<%= label %>", <%= datum.y %>],
+  <% end %>
+];
+
+var dataBar2 = [
+  <% @bar.data.each do |label, datum| %>
+    ["<%= label %>", <%= datum.y * 2 %>],
+  <% end %>
+];
+
+var dataBar = new Array();
+
+dataBar.push({
+  data:dataBar1,
+  bars: {
+    show: true, 
+    barWidth: 0.4, 
+    order: 1
+  },
+  color: '#d15b47'
+});
+
+dataBar.push({
+  data:dataBar2,
+  bars: {
+    show: true, 
+    barWidth: 0.4, 
+    order: 2
+  }
+});
+
+jQuery(function() {
+  plotBars();
+});
+
+function plotBars() {
+  var placeholder = jQuery('#barchart-placeholder');
+
+  jQuery.plot(placeholder, dataBar, {
+    xaxis: {
+      tickLength: 0,
+      mode: "categories"
+    },
+    grid: {
+      borderWidth: 0
+    }
+  });
+}
+*/

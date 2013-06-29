@@ -23,3 +23,7 @@
   background-color: none;
   border: none;
 }
+
+#piechart-placeholder {
+  margin-bottom: 20px;
+}

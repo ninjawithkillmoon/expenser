@@ -96,4 +96,8 @@ module ApplicationHelper
   def stylesheet(*files)
     content_for(:head) { stylesheet_link_tag(*files) }
   end
+
+  def graph_colours
+    ['#68BC31', '#2091CF', '#AF4E96', '#DA5430', '#FEE074', '#D6487E', '#FF8000', '#52E8FF', '#6BE879']
+  end
 end
