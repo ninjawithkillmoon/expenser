@@ -30,6 +30,8 @@ class Transaction < ActiveRecord::Base
 
   validate :corresponding_must_be_income, :corresponding_must_link, if: :transfer_from?
 
+  before_save :match_settles_tag
+
   after_save :recalculate_account_balance
 
   ## validation helpers
@@ -73,6 +75,12 @@ class Transaction < ActiveRecord::Base
   def recalculate_account_balance
     account.calculate_balance
     account.save!
+  end
+
+  def match_settles_tag
+    if settles?
+      tag = settles.tag
+    end
   end
 
   ## helpers

@@ -4,7 +4,7 @@
 <div class="row-fluid">
   <dl class="dl-horizontal">
     <%= dtdd 'Name', @account.name %>
-    <%= dtdd 'Balance', @account.balance %>
+    <%= dtdd 'Balance', raw(plus_minus_html(@account.balance_dollars)) + " " + number_to_currency(@account.balance_dollars.abs) %>
     <%= dtdd '', link_to(raw("<i class='icon-edit'></i> Edit"), edit_account_path(@account), class: "btn btn-small btn-warning") %>
   </dl>
 </div>

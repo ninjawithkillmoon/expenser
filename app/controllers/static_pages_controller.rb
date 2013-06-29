@@ -59,6 +59,6 @@ class StaticPagesController < ApplicationController
     @grapher = category_expense @expenses
     @grapher.sort_by_amount
 
-    @colours = ['#68BC31', '#2091CF', '#AF4E96', '#DA5430', '#FEE074'];
+    @colours = ['#68BC31', '#2091CF', '#AF4E96', '#DA5430', '#FEE074']
   end
 end

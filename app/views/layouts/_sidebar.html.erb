@@ -104,6 +104,30 @@
         </li>
       </ul>
     </li>
+
+    <!-- Transactions -->
+    <li class="<%= sidebar_active_controller 'reports' %>">
+      <a href="#" class="dropdown-toggle">
+        <i class="icon-signal"></i>
+        <span>Reports</span>
+        <b class="arrow icon-angle-down"></b>
+      </a>
+
+      <ul class="submenu">
+        <li class="<%= sidebar_active_view 'reports', '' %>">
+          <%= link_to raw('<i class="icon-double-angle-right"></i> Summary'), '/reports/' %>
+        </li>
+        <li class="<%= sidebar_active_view 'reports', 'income' %>">
+          <%= link_to raw('<i class="icon-double-angle-right"></i> Income'), '/reports/income' %>
+        </li>
+        <li class="<%= sidebar_active_view 'reports', 'expense' %>">
+          <%= link_to raw('<i class="icon-double-angle-right"></i> Expense'), '/reports/expense' %>
+        </li>
+        <li class="<%= sidebar_active_view 'reports', 'balance' %>">
+          <%= link_to raw('<i class="icon-double-angle-right"></i> Balance'), '/reports/balance' %>
+        </li>
+      </ul>
+    </li>
   </ul><!--/.nav-list-->
 
   <div id="sidebar-collapse">

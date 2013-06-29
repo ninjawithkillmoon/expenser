@@ -85,4 +85,15 @@ module ApplicationHelper
     end
   end
 
+  def javascript(*files)
+    content_for(:head) { javascript_include_tag(*files) }
+  end
+
+  def javascript_with_params(file)
+    content_for(:head) { "<script src=\"#{file}\" type=\"text/javascript\"></script>".html_safe }
+  end
+
+  def stylesheet(*files)
+    content_for(:head) { stylesheet_link_tag(*files) }
+  end
 end
