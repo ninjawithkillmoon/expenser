@@ -45,7 +45,7 @@ class TransfersController < ApplicationController
   end
 
   def fetch_transactions_settlement
-    @transactions_with_contact = Transaction.where('contact_id not null')
+    @transactions_with_contact = Transaction.where('contact_id IS NOT NULL')
   end
 
   def fetch_tags
