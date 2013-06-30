@@ -1,7 +1,7 @@
 <table class="table table-striped table-hover table-bordered">
   <% @accounts.each do |account| %>
     <tr>
-      <td>
+      <td class="span2">
         <%= link_to account.name, account_path(account) %>
       </td>
       <td class="span2">
@@ -9,7 +9,7 @@
           <div class="bar" style="width: <%= number_to_percentage (account.balance_dollars / (account.positive? ? @biggestPositive : @biggestNegative) * 100.0) %>"></div>
         </div>
       </td>
-      <td>
+      <td class="span2">
         <%= raw account.balance_html %>
       </td>
     </tr>

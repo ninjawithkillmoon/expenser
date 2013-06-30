@@ -1,5 +1,6 @@
 class Account < ActiveRecord::Base
   include ApplicationHelper
+  include ActionView::Helpers::NumberHelper
 
   attr_accessible :name, :balance, :balance_dollars, :balance_initial, :balance_initial_dollars
 
@@ -27,7 +28,7 @@ class Account < ActiveRecord::Base
   end
 
   def balance_html
-    return "#{plus_minus_html balance_dollars} #{balance_dollars.abs}"
+    return "#{plus_minus_html balance_dollars} #{number_to_currency balance_dollars.abs}"
   end
 
   def positive?
