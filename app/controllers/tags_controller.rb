@@ -68,6 +68,7 @@ class TagsController < ApplicationController
   end
 
   def fetch_tags
-    @tags = Tag.order('name ASC')
+    @tags = Tag.all
+    @tags.sort_by! { |tag|  }
   end
 end

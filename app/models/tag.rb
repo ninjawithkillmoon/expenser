@@ -36,7 +36,7 @@ class Tag < ActiveRecord::Base
     if root?
       return id
     else
-      return parent.id
+      return parent.top_level_id
     end
   end
 
